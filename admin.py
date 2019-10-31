@@ -5,3 +5,8 @@ from .models import *
 class PictureAdmin(admin.ModelAdmin):
     list_display = ( 'name','file','created_at','updated_at')
     exclude = ('name',)
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ( 'name','file','background_image','created_at','updated_at')
+    exclude = ('name',)

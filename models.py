@@ -1,10 +1,12 @@
 from django.db import models
-from .helpers import generate_upload_path
+from django.conf import settings
+from .helpers import generate_img_upload_path, generate_video_upload_path
+import os
 
 # Create your models here.
 class Picture(models.Model):
     name = models.CharField(blank=True, max_length=100)
-    file = models.ImageField(upload_to=generate_upload_path, default='img/default.jpg')
+    file = models.ImageField(upload_to=generate_img_upload_path, default='img/default.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -15,5 +17,17 @@ class Picture(models.Model):
     def __str__(self):
         return self.file.name
 
-    def __unicode__(self):
-        return self.file.url
+
+class Video(models.Model):
+    name = models.CharField(blank=True, max_length=100)
+    file = models.FileField(upload_to=generate_video_upload_path)
+    background_image = models.ForeignKey(Picture,on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name='Video'
+        verbose_name_plural='Videos'
+
+    def __str__(self):
+        return self.file.name

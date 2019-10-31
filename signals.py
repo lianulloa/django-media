@@ -38,6 +38,7 @@ def picture_format_generator(sender,instance, **kwargs):
     )
 
 
+@receiver(pre_save, sender=Video)
 @receiver(pre_save, sender=Picture, dispatch_uid='auto_fill_name')
 def auto_fill_name(sender,instance, **kwargs):
     print('auto_fill_name')
