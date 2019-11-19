@@ -21,6 +21,7 @@ class Picture(models.Model):
 class Video(models.Model):
     name = models.CharField(blank=True, max_length=100)
     file = models.FileField(upload_to=generate_video_upload_path)
+    duration = models.DurationField(blank=True)
     background_image = models.ForeignKey(Picture,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

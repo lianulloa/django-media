@@ -19,4 +19,4 @@ class VideoSerializer(serializers.ModelSerializer):
     background_image = PictureSerializer(read_only=True)
     class Meta:
         model = Video
-        fields = ('id','url','background_image')
+        fields = ('id','url','background_image','duration')
