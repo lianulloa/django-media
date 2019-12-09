@@ -32,3 +32,18 @@ class Video(models.Model):
 
     def __str__(self):
         return self.file.name
+
+class SocialVideo(models.Model):
+    name = models.CharField(blank=True, max_length=100)
+    url = models.URLField()
+    duration = models.DurationField(blank=True)
+    background_image = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name='Video de Youtube'
+        verbose_name_plural='Videos de Youtube'
+
+    def __str__(self):
+        return self.file.name

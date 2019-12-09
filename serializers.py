@@ -20,3 +20,10 @@ class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
         fields = ('id','url','background_image','duration')
+
+class SocialVideoSerializer(serializers.ModelSerializer):
+    # url = serializers.CharField(source="file.url")
+    # background_image = PictureSerializer(read_only=True)
+    class Meta:
+        model = SocialVideo
+        fields = ('id','url','background_image','duration')
