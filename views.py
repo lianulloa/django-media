@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework import generics, mixins,status, viewsets
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 
 # Create your views here.
 class PictureViewSet(viewsets.ModelViewSet):
@@ -14,7 +16,8 @@ class PictureViewSet(viewsets.ModelViewSet):
     parser_classes = (FormParser, MultiPartParser)
 
 class VideoViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
+    queryset = SocialVideo.objects.all()
+    serializer_class = SocialVideoSerializer
     parser_classes = (FormParser, MultiPartParser)
+
 
