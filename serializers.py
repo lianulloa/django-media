@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.urls import reverse
 from .models import *
+from urllib.parse import urlparse, parse_qs
 
 class PictureSerializer(serializers.ModelSerializer):
     url = serializers.CharField(source="file.url")
@@ -23,7 +24,14 @@ class VideoSerializer(serializers.ModelSerializer):
 
 class SocialVideoSerializer(serializers.ModelSerializer):
     # url = serializers.CharField(source="file.url")
-    # background_image = PictureSerializer(read_only=True)
+    background_image = serializers.SerializerMethodField()
+
+    def get_background_image(self,instance):
+        params = parse_qs(urlparse(instance.url).query)
+        print(params)
+        print(instance.url)
+        return 'https://img.youtube.com/vi/' + params['v'][0] + '/maxresdefault.jpg'
+
     class Meta:
         model = SocialVideo
         fields = ('id','url','background_image','duration')

@@ -37,7 +37,7 @@ class SocialVideo(models.Model):
     name = models.CharField(blank=True, max_length=100)
     url = models.URLField()
     duration = models.DurationField(blank=True)
-    background_image = models.URLField()
+    # background_image = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -46,4 +46,4 @@ class SocialVideo(models.Model):
         verbose_name_plural='Videos de Youtube'
 
     def __str__(self):
-        return self.file.name
+        return self.url

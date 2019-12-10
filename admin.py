@@ -13,5 +13,5 @@ class PictureAdmin(admin.ModelAdmin):
 
 @admin.register(SocialVideo)
 class SocialVideoAdmin(admin.ModelAdmin):
-    list_display = ( 'name','url','background_image','created_at','updated_at')
+    list_display = ( 'name','url','created_at','updated_at')
     # exclude = ('name',)

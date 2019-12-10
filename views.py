@@ -16,8 +16,8 @@ class PictureViewSet(viewsets.ModelViewSet):
     parser_classes = (FormParser, MultiPartParser)
 
 class VideoViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
+    queryset = SocialVideo.objects.all()
+    serializer_class = SocialVideoSerializer
     parser_classes = (FormParser, MultiPartParser)
 
 
